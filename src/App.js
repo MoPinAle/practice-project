@@ -4,18 +4,18 @@ import AddUser from './components/Users/AddUser';
 import UsersList from './components/Users/UsersList';
 
 const App = () => {
-  const [userList, setUserList] = useState([]);
+  const [usersList, setUsersList] = useState([]);
 
-  const addUserToList = (user) => {
-    setUserList(prevUserList => {
-      return [user, ...prevUserList];
+  const addUserHandler = (uName, uAge) => {
+    setUsersList(prevUsersList => {
+      return [...prevUsersList, { name: uName, age: uAge, id: Math.random().toString() }];
     });
   }
 
   return (
     <div>
-      <AddUser onAddUser={addUserToList} />
-      <UsersList users={userList} />
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersList} />
     </div>
   );
 }
